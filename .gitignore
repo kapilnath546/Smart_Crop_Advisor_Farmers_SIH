@@ -1,0 +1,110 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store# -------------------------
+# Node / Frontend
+# -------------------------
+node_modules/
+dist/
+dist-ssr/
+build/
+*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# -------------------------
+# Python / Backend
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.dylib
+*.egg-info/
+.eggs/
+*.manifest
+*.spec
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Testing
+.pytest_cache/
+.coverage
+coverage/
+*.cover
+*.py,cover
+.hypothesis/
+
+# -------------------------
+# Environment & Secrets
+# -------------------------
+.env
+.env.*
+soil_detection/soil.env
+Pesist__Detection/Pesist_Detection/pest.env
+
+# Supabase local config
+.supabase/
+
+# -------------------------
+# Editors & OS
+# -------------------------
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*.bak
+*.tmp
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# -------------------------
+# Misc
+# -------------------------
+*.pid
+*.seed
+*.lockb
+
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*soil_detection\soil.env
+soil_detection\soil.env
+*Pesist__Detection\Pesist_Detection\pest.env
+Pesist__Detection\Pesist_Detection\pest.env

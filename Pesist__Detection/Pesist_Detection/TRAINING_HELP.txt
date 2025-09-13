@@ -1,0 +1,44 @@
+
+Training outline (TensorFlow / Keras - Transfer Learning with MobileNetV2):
+
+1) Download dataset (e.g., PlantVillage) and create folders:
+   data/train/<class_name>/*.jpg
+   data/val/<class_name>/*.jpg
+
+2) Use this sample training script (save as train.py):
+
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.applications import MobileNetV2
+from tensorflow.keras.layers import GlobalAveragePooling2D, Dense
+from tensorflow.keras.models import Model
+from tensorflow.keras.optimizers import Adam
+
+img_size = (224,224)
+train_datagen = ImageDataGenerator(rescale=1./255, rotation_range=20, width_shift_range=0.1,
+                                   height_shift_range=0.1, shear_range=0.1, zoom_range=0.1, horizontal_flip=True)
+val_datagen = ImageDataGenerator(rescale=1./255)
+
+train_gen = train_datagen.flow_from_directory('data/train', target_size=img_size, batch_size=32, class_mode='categorical')
+val_gen = val_datagen.flow_from_directory('data/val', target_size=img_size, batch_size=32, class_mode='categorical')
+
+base = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224,224,3))
+ x = base.output
+ x = GlobalAveragePooling2D()(x)
+ preds = Dense(train_gen.num_classes, activation='softmax')(x)
+ model = Model(inputs=base.input, outputs=preds)
+
+for layer in base.layers:
+    layer.trainable = False
+
+model.compile(optimizer=Adam(1e-3), loss='categorical_crossentropy', metrics=['accuracy'])
+model.fit(train_gen, validation_data=val_gen, epochs=10)
+model.save('model.h5')
+
+3) Save class indices mapping:
+   import json
+   with open('class_indices.json', 'w') as f:
+       json.dump(train_gen.class_indices, f)
+
+4) Move model.h5 and class_indices.json to the Streamlit app folder and enable "Use local Keras model" in the sidebar.
+
+Note: Kaggle dataset download requires kaggle CLI and authentication. See: https://www.kaggle.com/docs/api

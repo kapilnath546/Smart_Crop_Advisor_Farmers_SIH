@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+window.addEventListener('mouseover', initLandbot, { once: true });
+window.addEventListener('touchstart', initLandbot, { once: true });
+var myLandbot;
+function initLandbot() {
+  if (!myLandbot) {
+    var s = document.createElement('script');
+    s.type = "module"
+    s.async = true;
+    s.addEventListener('load', function() {
+      myLandbot = new Landbot.Popup({
+        configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3131306-0RWIGOVGFGMI05DR/index.json',
+      });
+    });
+    s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+  }
+}
+</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartCropAdvisor - AI-Powered Farming Assistant</title>
+    <meta name="description" content="SmartCropAdvisor provides AI-powered farming guidance with soil analysis, pest detection, weather forecasts, and market prices. Smart guidance for smart farming." />
+    <meta name="author" content="SmartCropAdvisor Team" />
+    <meta name="keywords" content="farming, agriculture, AI, crop advisor, soil analysis, pest detection, weather forecast, market prices, smart farming" />
+
+    <meta property="og:title" content="SmartCropAdvisor - AI-Powered Farming Assistant" />
+    <meta property="og:description" content="Get instant farming advice with AI-powered soil analysis, pest detection, and market insights. Smart guidance for smart farming in multiple languages." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@SmartCropAdvisor" />
+    <meta name="twitter:title" content="SmartCropAdvisor - AI-Powered Farming Assistant" />
+    <meta name="twitter:description" content="Smart guidance for smart farming with AI-powered crop advice" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
